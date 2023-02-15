@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import css from './Searchbar.module.css';
 
 export class Searchbar extends Component {
   state = {
@@ -7,9 +8,9 @@ export class Searchbar extends Component {
   };
   render() {
     return (
-      <header className="Searchbar">
+      <header className={css.Searchbar}>
         <form
-          className="SearchForm"
+          className={css.SearchForm}
           onSubmit={e => {
             e.preventDefault();
             this.props.getQuery(this.state.query);
@@ -20,14 +21,14 @@ export class Searchbar extends Component {
             onChange={({ target }) => {
               this.setState({ query: target.value });
             }}
-            className="SearchForm-input"
+            className={css.SearchFormInput}
             type="text"
             autoComplete="off"
             autoFocus
             placeholder="Search images and photos"
           />
-          <button type="submit" className="SearchForm-button">
-            <span className="SearchForm-button-label">Search</span>
+          <button type="submit" className={css.SearchFormButton}>
+            <span className={css.SearchFormButtonLabel}>Search</span>
           </button>
         </form>
       </header>

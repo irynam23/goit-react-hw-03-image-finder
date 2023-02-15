@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { Component } from 'react';
 import { Modal } from 'components/Modal/Modal';
+import css from './ImageGalleryItem.module.css';
 
 export class ImageGalleryItem extends Component {
   state = {
@@ -29,9 +30,9 @@ export class ImageGalleryItem extends Component {
     const { webformatURL, largeImageURL } = this.props;
     return (
       <>
-        <li className="ImageGalleryItem">
+        <li className={css.ImageGalleryItem}>
           <img
-            className="ImageGalleryItem-image"
+            className={css.ImageGalleryItemImage}
             src={webformatURL}
             alt=""
             onClick={this.openModal}
