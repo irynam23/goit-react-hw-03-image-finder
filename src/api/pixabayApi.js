@@ -16,3 +16,15 @@ export const getImages = async (query, page) => {
     throw new Error(error);
   }
 };
+
+export const getNormalisedImages = async (query, page) => {
+  const { hits, totalHits } = await getImages(query, page);
+  return {
+    images: hits.map(({ id, webformatURL, largeImageURL }) => ({
+      id,
+      webformatURL,
+      largeImageURL,
+    })),
+    totalImages: totalHits,
+  };
+};

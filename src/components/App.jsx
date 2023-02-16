@@ -30,21 +30,16 @@ export class App extends Component {
     const { query, page } = this.state;
     try {
       this.setState({ isLoading: true });
-      const { hits: images, totalHits: totalImages } =
-        await pixabayApi.getImages(query, page);
+      const { images, totalImages } = await pixabayApi.getNormalisedImages(
+        query,
+        page
+      );
       if (!images.length) {
         this.setState({ error: 'Sorry. There are no images ... 😭' });
         return;
       }
       this.setState(prevState => ({
-        images: [
-          ...prevState.images,
-          ...images.map(({ id, webformatURL, largeImageURL }) => ({
-            id,
-            webformatURL,
-            largeImageURL,
-          })),
-        ],
+        images: [...prevState.images, ...images],
         error: '',
         totalImages,
       }));
